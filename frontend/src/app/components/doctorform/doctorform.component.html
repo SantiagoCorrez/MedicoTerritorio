@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{ data?.id ? 'Editar' : 'Crear' }} Doctor</h2>
+<div mat-dialog-content>
+    <form>
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Nombre del Médico</mat-label>
+            <input matInput [(ngModel)]="form.nombre_medico" name="nombre_medico" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Especialidad</mat-label>
+            <input matInput [(ngModel)]="form.especialidad_medico" name="especialidad_medico" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Foto (URL)</mat-label>
+            <input matInput [(ngModel)]="form.foto" name="foto" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Consultas</mat-label>
+            <input matInput type="number" [(ngModel)]="form.numero_consultas" name="numero_consultas" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Dirección</mat-label>
+            <input matInput [(ngModel)]="form.direccion" name="direccion" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Puesto de Atención</mat-label>
+            <input matInput [(ngModel)]="form.puesto_atencion" name="puesto_atencion" />
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+</div>

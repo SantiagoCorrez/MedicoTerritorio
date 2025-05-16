@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+dist/
+.env
+.env.local
+.env.development
+.env.production
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Angular
+.angular/
+coverage/
+.sass-cache/
+.cache/
+tmp/
+out-tsc/
+.angular/cache/
+.angular/config.json
+
+# IDEs y sistemas operativos
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Compilados
+*.log
+*.tsbuildinfo
+
+# Git
+*.orig
+
+# Build output
+/build/
+/docs/
+
+# Logs
+logs/
+*.log
+
+# Optional: para ignorar los certificados de desarrollo de HTTPS
+sslcert/
