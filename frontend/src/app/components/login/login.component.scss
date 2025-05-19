@@ -1,0 +1,79 @@
+/* Contenedor centrado */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 1rem;
+}
+
+/* Card del formulario */
+.login-container form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Títulos y labels */
+.login-container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+/* Inputs */
+.login-container input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.login-container input:focus {
+  outline: none;
+  border-color: #5c6ac4; /* color de énfasis */
+  box-shadow: 0 0 0 3px rgba(92, 106, 196, 0.2);
+}
+
+/* Botón */
+.login-container button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.375rem;
+  background: #5c6ac4;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.login-container button:disabled {
+  background: #a2a6d1;
+  cursor: not-allowed;
+}
+
+.login-container button:hover:not(:disabled) {
+  background: #4b559c;
+}
+
+.login-container button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Mensaje de error */
+.login-container .error {
+  margin-top: 0.5rem;
+  color: #c53030;
+  font-size: 0.875rem;
+  text-align: center;
+}

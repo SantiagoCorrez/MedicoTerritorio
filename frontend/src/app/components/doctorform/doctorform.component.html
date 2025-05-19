@@ -2,6 +2,16 @@
 <div mat-dialog-content>
     <form>
         <mat-form-field appearance="fill" class="full">
+            <mat-label>Codigo del Municipio</mat-label>
+            <input matInput [(ngModel)]="form.codigo_municipio" name="codigo_municipio" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Nombre del Municipio</mat-label>
+            <input matInput [(ngModel)]="form.nombre_municipio" name="nombre_municipio" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full">
             <mat-label>Nombre del Médico</mat-label>
             <input matInput [(ngModel)]="form.nombre_medico" name="nombre_medico" />
         </mat-form-field>
