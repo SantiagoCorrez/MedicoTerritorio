@@ -1,29 +1,39 @@
-const pool = require("../models/db");
+// doctor.controller.js  –  ES Module
+import pool from '../models/db.js';        // ? conexión a PostgreSQL (ESM)
 
-exports.getAllDoctors = async (req, res) => {
+// -------------------------------------------------------------
+// GET /api/doctores
+export const getAllDoctors = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM doctores");
-    res.json(result.rows);
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ error: "Error al obtener doctores" });
+    const { rows } = await pool.query('SELECT * FROM doctores');
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al obtener doctores' });
   }
 };
 
-exports.getDoctorsByMunicipio = async (req, res) => {
+// -------------------------------------------------------------
+// GET /api/doctores/municipio/:codigo
+export const getDoctorsByMunicipio = async (req, res) => {
   const { codigo } = req.params;
   try {
-    const result = await pool.query(
-      "SELECT * FROM doctores WHERE codigo_municipio = $1",
-      [codigo]
+    const { rows } = await pool.query(
+      'SELECT * FROM doctores WHERE codigo_municipio = $1',
+      [codigo],
     );
-    res.json(result.rows);
-  } catch (error) {
-    res.status(500).json({ error: "Error al obtener doctores por municipio" });
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: 'Error al obtener doctores por municipio' });
   }
 };
 
-exports.createDoctor = async (req, res) => {
+// -------------------------------------------------------------
+// POST /api/doctores
+export const createDoctor = async (req, res) => {
   const {
     codigo_municipio,
     nombre_municipio,
@@ -36,9 +46,9 @@ exports.createDoctor = async (req, res) => {
   } = req.body;
 
   try {
-    const result = await pool.query(
+    const { rows } = await pool.query(
       `INSERT INTO doctores (
-        codigo_municipio, nombre_municipio, nombre_medico, especialidad_medico, 
+        codigo_municipio, nombre_municipio, nombre_medico, especialidad_medico,
         foto, numero_consultas, direccion, puesto_atencion
       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
       [
@@ -50,15 +60,18 @@ exports.createDoctor = async (req, res) => {
         numero_consultas,
         direccion,
         puesto_atencion,
-      ]
+      ],
     );
-    res.status(201).json(result.rows[0]);
-  } catch (error) {
-    res.status(500).json({ error: "Error al crear mÃ©dico" });
+    res.status(201).json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al crear médico' });
   }
 };
 
-exports.updateDoctor = async (req, res) => {
+// -------------------------------------------------------------
+// PUT /api/doctores/:id
+export const updateDoctor = async (req, res) => {
   const { id } = req.params;
   const {
     nombre_medico,
@@ -70,11 +83,16 @@ exports.updateDoctor = async (req, res) => {
   } = req.body;
 
   try {
-    const result = await pool.query(
-      `UPDATE doctores SET 
-        nombre_medico = $1, especialidad_medico = $2, foto = $3,
-        numero_consultas = $4, direccion = $5, puesto_atencion = $6
-      WHERE id = $7 RETURNING *`,
+    const { rows } = await pool.query(
+      `UPDATE doctores SET
+        nombre_medico = $1,
+        especialidad_medico = $2,
+        foto = $3,
+        numero_consultas = $4,
+        direccion = $5,
+        puesto_atencion = $6
+      WHERE id = $7
+      RETURNING *`,
       [
         nombre_medico,
         especialidad_medico,
@@ -83,20 +101,24 @@ exports.updateDoctor = async (req, res) => {
         direccion,
         puesto_atencion,
         id,
-      ]
+      ],
     );
-    res.json(result.rows[0]);
-  } catch (error) {
-    res.status(500).json({ error: "Error al actualizar mÃ©dico" });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al actualizar médico' });
   }
 };
 
-exports.deleteDoctor = async (req, res) => {
+// -------------------------------------------------------------
+// DELETE /api/doctores/:id
+export const deleteDoctor = async (req, res) => {
   const { id } = req.params;
   try {
-    await pool.query("DELETE FROM doctores WHERE id = $1", [id]);
-    res.json({ message: "MÃ©dico eliminado correctamente" });
-  } catch (error) {
-    res.status(500).json({ error: "Error al eliminar mÃ©dico" });
+    await pool.query('DELETE FROM doctores WHERE id = $1', [id]);
+    res.json({ message: 'Médico eliminado correctamente' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al eliminar médico' });
   }
 };

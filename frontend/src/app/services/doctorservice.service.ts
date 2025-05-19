@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const api_url = "http://localhost:3000"
+const api_url = "https://medicocundinamarca.creatisoftcolombia.lat"
 
 
 @Injectable({
