@@ -17,14 +17,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 1??  Archivos estáticos — SPA de administración
+// 1??  Archivos estï¿½ticos ï¿½ SPA de administraciï¿½n
 app.use(
   express.static(
     path.join(__dirname, '../frontend/dist/frontend/browser'),
   ),
 );
 
-// 2??  Archivos estáticos — Mapa (ajusta solo un nombre)
+// 2??  Archivos estï¿½ticos ï¿½ Mapa (ajusta solo un nombre)
 app.use(
   express.static(
     path.join(__dirname, '../appMapas/dist'),   // ?  mismo nombre
@@ -34,8 +34,8 @@ app.use(
 // 3??  Rutas API
 app.use('/api/doctores', doctorRoutes);
 
-// 4??  Entrada directa a “/adminDoctores”
-app.get('/adminDoctores', (req, res) => {
+// 4??  Entrada directa a ï¿½/adminDoctoresï¿½
+app.get('/admin', (req, res) => {
   res.sendFile(
     path.join(__dirname, '../frontend/dist/frontend/browser/index.html'),
   );

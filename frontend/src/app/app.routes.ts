@@ -5,5 +5,6 @@ import { AdminDoctoresComponent } from './components/admin-doctores/admin-doctor
 
 export const routes: Routes = [
     {component:AdminDoctoresComponent,path:'adminDoctores'},
-    {component:LoginComponent,path:'login'}
+    {component:LoginComponent,path:'login'},
+    {component:LoginComponent,path:''},
 ];
