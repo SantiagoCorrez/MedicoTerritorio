@@ -126,6 +126,7 @@ Promise.all([
     map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       const medicos = feature.get('medicos');
       const container = document.getElementById('modal-body');
+      document.getElementById("nombreMunicipio").innerHTML=(feature.getProperties().munnombre)
       container.innerHTML = medicos.map(m => `
         <div style="display:flex; margin-bottom:10px;">
           <img src="${m.foto}" alt="Foto médico" width="70" style="margin-right: 10px; border-radius: 6px;" />
