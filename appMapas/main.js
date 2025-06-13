@@ -14,7 +14,7 @@ import Overlay from 'https://cdn.jsdelivr.net/npm/ol@latest/Overlay.js';
 import Draw from 'ol/interaction/Draw'
 import { Circle } from 'ol/geom';
 import Icon from 'ol/style/Icon';
-const API_URL = 'http://localhost:3001/api/doctores';
+const API_URL = 'https://medicocundinamarca.creatisoftcolombia.lat/api/doctores';
 const GEOJSON_MUNICIPIOS = 'capas/Municipios_DANE.geojson';
 
 const layerDepartamento = new VectorLayer({
