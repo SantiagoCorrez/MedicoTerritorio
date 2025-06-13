@@ -1,20 +1,17 @@
 <mat-card>
   <h2>Médicos por Municipio</h2>
   <button mat-raised-button color="primary" (click)="abrirModal()">Crear Doctor</button>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!-- Foto -->
-    <ng-container matColumnDef="foto">
-      <th mat-header-cell *matHeaderCellDef> Foto </th>
-      <td mat-cell *matCellDef="let element">
-        <img [src]="element.foto" width="50" height="50" style="border-radius: 50%;">
-      </td>
-    </ng-container>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
 
     <!-- Nombre -->
-    <ng-container matColumnDef="nombre_medico">
+    <ng-container matColumnDef="nombre_municipio">
+      <th mat-header-cell *matHeaderCellDef> Nombre Municipio</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre_municipio}} </td>
+    </ng-container>
+    <!-- Nombre -->
+    <ng-container matColumnDef="general_medico">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre_medico}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.general_medico}} </td>
     </ng-container>
 
     <!-- Especialidad -->
@@ -27,6 +24,11 @@
     <ng-container matColumnDef="numero_consultas">
       <th mat-header-cell *matHeaderCellDef> Consultas </th>
       <td mat-cell *matCellDef="let element"> {{element.numero_consultas}} </td>
+    </ng-container>
+    <!-- Consultas -->
+    <ng-container matColumnDef="numero_consultas_especialidad">
+      <th mat-header-cell *matHeaderCellDef> Consultas Especialidades</th>
+      <td mat-cell *matCellDef="let element"> {{element.numero_consultas_especialidad}} </td>
     </ng-container>
 
     <!-- Dirección -->
@@ -43,7 +45,7 @@
 
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
-      <td mat-cell *matCellDef="let element"> 
+      <td mat-cell *matCellDef="let element">
         <button mat-icon-button (click)="abrirModal(element)"><mat-icon>edit</mat-icon> </button>
         <button mat-icon-button (click)="eliminar(element)"><mat-icon>delete</mat-icon> </button>
       </td>

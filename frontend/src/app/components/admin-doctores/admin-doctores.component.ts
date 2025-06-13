@@ -23,10 +23,11 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 export class AdminDoctoresComponent implements AfterViewInit {
   title = 'frontend';
   displayedColumns: string[] = [
-    'foto',
-    'nombre_medico',
+    'nombre_municipio',
+    'general_medico',
     'especialidad_medico',
     'numero_consultas',
+    'numero_consultas_especialidad',
     'direccion',
     'puesto_atencion',
     'acciones'
@@ -55,6 +56,7 @@ export class AdminDoctoresComponent implements AfterViewInit {
   }
 
   abrirModal(doctor: any = null) {
+    console.log(doctor)
     const dialogRef = this.dialog.open(DoctorformComponent, {
       width: '80vw',
       data: doctor,

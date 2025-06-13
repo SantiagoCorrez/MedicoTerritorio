@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ data?.id ? 'Editar' : 'Crear' }} Doctor</h2>
 <div mat-dialog-content>
-    <form>
+    <form style="display: flex;justify-content: space-between;flex-wrap: wrap;">
         <mat-form-field appearance="fill" class="full">
             <mat-label>Codigo del Municipio</mat-label>
             <input matInput [(ngModel)]="form.codigo_municipio" name="codigo_municipio" />
@@ -12,24 +12,26 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full">
-            <mat-label>Nombre del Médico</mat-label>
-            <input matInput [(ngModel)]="form.nombre_medico" name="nombre_medico" />
+            <mat-label>Médico General 24 Horas</mat-label>
+            <input matInput [(ngModel)]="form.general_medico" name="general_medico" />
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full">
-            <mat-label>Especialidad</mat-label>
+            <mat-label>Especialidades</mat-label>
             <input matInput [(ngModel)]="form.especialidad_medico" name="especialidad_medico" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="full">
-            <mat-label>Foto (URL)</mat-label>
-            <input matInput [(ngModel)]="form.foto" name="foto" />
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full">
             <mat-label>Consultas</mat-label>
             <input matInput type="number" [(ngModel)]="form.numero_consultas" name="numero_consultas" />
         </mat-form-field>
+        
+        <mat-form-field appearance="fill" class="full">
+            <mat-label>Consultas Especialidades</mat-label>
+            <input matInput type="number" [(ngModel)]="form.numero_consultas_especialidad" name="numero_consultas_especialidad" />
+        </mat-form-field>
+        
+        
 
         <mat-form-field appearance="fill" class="full">
             <mat-label>Dirección</mat-label>

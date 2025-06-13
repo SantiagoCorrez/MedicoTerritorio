@@ -14,7 +14,7 @@ import Overlay from 'https://cdn.jsdelivr.net/npm/ol@latest/Overlay.js';
 import Draw from 'ol/interaction/Draw'
 import { Circle } from 'ol/geom';
 import Icon from 'ol/style/Icon';
-const API_URL = 'https://medicocundinamarca.creatisoftcolombia.lat/api/doctores';
+const API_URL = 'http://localhost:3001/api/doctores';
 const GEOJSON_MUNICIPIOS = 'capas/Municipios_DANE.geojson';
 
 const layerDepartamento = new VectorLayer({
@@ -129,12 +129,12 @@ Promise.all([
       document.getElementById("nombreMunicipio").innerHTML=(feature.getProperties().munnombre)
       container.innerHTML = medicos.map(m => `
         <div style="display:flex; margin-bottom:10px;">
-          <img src="${m.foto}" alt="Foto médico" width="70" style="margin-right: 10px; border-radius: 6px;" />
           <div>
-            <strong>${m.nombre_medico}</strong><br/>
-            ${m.especialidad_medico}<br/>
+            <strong>Medicina General 24 Horas</strong>: ${m.general_medico}<br/>
+            <strong>Especialidades</strong>: ${m.especialidad_medico}<br/>
             <small>${m.puesto_atencion} - ${m.direccion}</small><br/>
-            <small>Consultas: ${m.numero_consultas}</small>
+            <small>Consultas: ${m.numero_consultas}</small><br/>
+            <small>Consultas de especialidad: ${m.numero_consultas_especialidad}</small>
           </div>
         </div>
       `).join('');

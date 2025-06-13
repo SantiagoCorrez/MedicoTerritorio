@@ -18,13 +18,14 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './doctorform.component.scss'
 })
 export class DoctorformComponent {
-  form: any = {};
+  form: any;
 
   constructor(
     public dialogRef: MatDialogRef<DoctorformComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.form = { ...data }; // Si es edición, se precargan los datos
+    console.log(this.form)
   }
 
   guardar() {
