@@ -19,6 +19,7 @@ app.use(express.json());
 
 // 1??  Archivos est�ticos � SPA de administraci�n
 app.use(
+  '/medico-en-tu-territorio/admin',
   express.static(
     path.join(__dirname, '../frontend/dist/frontend/browser'),
   ),
@@ -26,23 +27,24 @@ app.use(
 
 // 2??  Archivos est�ticos � Mapa (ajusta solo un nombre)
 app.use(
+  '/medico-en-tu-territorio',
   express.static(
     path.join(__dirname, '../appMapas/dist'),   // ?  mismo nombre
   ),
 );
 
 // 3??  Rutas API
-app.use('/api/doctores', doctorRoutes);
+app.use('/medico-en-tu-territorio/api/doctores', doctorRoutes);
 
 // 4??  Entrada directa a �/adminDoctores�
-app.get('/admin', (req, res) => {
+app.get(['/medico-en-tu-territorio/admin', '/medico-en-tu-territorio/admin/*'], (req, res) => {
   res.sendFile(
     path.join(__dirname, '../frontend/dist/frontend/browser/index.html'),
   );
 });
 
 // 5??  Catch-all del mapa (nota la barra) ?
-app.get('/mapa', (req, res) => {
+app.get(['/medico-en-tu-territorio', '/medico-en-tu-territorio/*'], (req, res) => {
   res.sendFile(
     path.join(__dirname, '../appMapas/dist/index.html'),  // ? mismo nombre
   );
